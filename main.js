@@ -161,3 +161,88 @@ const inventory = [
     sold: 8,
   },
 ];
+//log van inventory
+//console.log(inventory)
+
+//Opdracht 1a: Gebruik een array-methode om een array te maken met alle tv-type namen. Log de uitkomst in de console.
+const tvNames = inventory.map((tvName) =>{
+  return tvName.type
+})
+console.log(tvNames);
+
+//Opdracht 1b: Gebruik een array-methode om alle tv's te verzamelen (de hele objecten) die volledig uitverkocht zijn. Log de uitkomst in de console.
+const soldOutTvs = inventory.filter((soldOutTv) =>{
+  return soldOutTv.sold === soldOutTv.originalStock
+})
+console.log(soldOutTvs)
+
+
+// Opdracht 1c: Gebruik een array-methode om alle tv's te verzamelen (de hele objecten) die over AmbiLight beschikken. Log de uitkomst in de console.
+
+const ambiLightTvs = inventory.filter((ambiLightTv) =>{
+  return ambiLightTv.options.ambiLight
+})
+console.log(ambiLightTvs)
+
+//Opdracht 1d: Schrijf een functie die alle tv's van laagste naar hoogste prijs sorteert. Log de uitkomst in de console.
+
+function sortOnPrice (sortedPrice){
+  return sortedPrice.sort((a, b) => a.price - b.price)}
+  sortOnPrice(inventory)
+
+// FOUT = const sortedPrices = inventory.sort ((a, b) =>{
+//   return a.price - b.price
+// })
+// console.log(sortedPrices)
+
+// Opdracht 2 - Elementen in de DOM plaatsen
+// Tip: wanneer we meerdere waardes uit een array willen terugbrengen tot één getal of één string, gebruik je hier gewoon een oude vertrouwde for-loop voor!
+//
+//     Opdracht 2a: Hoeveel tv's zijn er al verkocht? Schrijf een script dat dit berekent. Log de uitkomst in de console.
+
+let tvSold = 0;
+for (let i = 0; i <inventory.length ; i++){
+tvSold = inventory[i].sold + tvSold}
+//const tvSoldJS = 'Het aantal verkochte televisies is ${tvSold}'; WAT MOET HIER GEBEUREN?
+console.log(tvSold)
+
+const amountSoldTvs = document.getElementById('soldTvs')
+amountSoldTvs.textContent = tvSold // CONTROLEER DIT
+
+//     Opdracht 2c: Hoeveel tv's heeft Tech It Easy ingekocht? Schrijf een script dat dit berekent. Log de uitkomst in de console.
+let tvsInStock = 0;
+for (let i = 0; i < inventory.length; i++){
+  tvsInStock = (inventory[i].originalStock + tvsInStock)
+}
+const boughtTvs = document.getElementById('boughtTvs')
+boughtTvs.textContent = tvsInStock
+console.log(tvsInStock)
+
+// Opdracht 2d: Zorg ervoor dat dit aantal in het blauw wordt weergegeven op de pagina.
+//     Opdracht 2e: Geef in het rood weer hoeveel tv's er nog verkocht moeten worden.
+const tvsToSellLeft = tvsInStock - tvSold;
+console.log(tvsToSellLeft)
+const tvsLeftToSell = document.getElementById('tvsLeft')
+tvsLeftToSell.textContent = tvsToSellLeft // CONTROLEER DIT
+
+// Opdracht 3 - Array methoden en functies
+// Opdracht 3a: Gebruik een array-methode om alle tv merken (zoals Philips, NIKKEI, etc.) in een lijst op de pagina weer te geven. Zorg ervoor dat dit ook zou werken als we 200 tv's in onze array zouden hebben staan. Dat er dubbele namen in zitten, is niet erg.
+
+const listOfBrands = inventory.map((brands) =>{
+  return brands.brand
+})
+console.log(listOfBrands)
+
+const brands = document.getElementById('allBrands')
+brands.textContent = listOfBrands // CONTROLEER DIT
+// Dit werkt niet dus uitgeschakeld : brands.innerHTML = '<p>Het overzicht van beschikbare merken ${listOfBrands}</p>';
+
+//Onderstaande is niet goed, ik weet het.
+// Opdracht 3b: Schrijf de code uit 3a om naar een functie die een array met tv-objecten verwacht. Het is handig om onze scripts als functies op te zetten, zodat we ze gemakkelijk kunnen hergebruiken. Tip: vergeet deze functie -declaratie niet aan te roepen!
+function totalList (list){
+  return list.brand}
+
+const list = totalList(inventory)
+console.log(list)
+
+

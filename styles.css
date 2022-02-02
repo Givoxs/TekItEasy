@@ -1,0 +1,24 @@
+*{
+    margin: 20px;
+    padding: 20px;
+}
+
+body{
+    background-color: gray;
+}
+
+#soldTvs{
+    color: green;
+    font-size: 40px;
+}
+
+#boughtTvs{
+    color: blue;
+    font-size: 40px;
+}
+
+#tvsLeft{
+    color: red;
+    font-size: 40px;
+}
+
